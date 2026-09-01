@@ -1,0 +1,8 @@
+{
+  "name": "Escape the Cursed Room: Blackout",
+  "description": "มินิเกมสยองขวัญหนีออกจากห้องต้องสาป ค้นหาคำใบ้สมการคณิตศาสตร์ด้วยไฟฉายและถอดรหัสก่อนแบตเตอรี่หรือเวลา 60 วินาทีจะหมดลง",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

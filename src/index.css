@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #050505;
+    color: #e5e5e5;
+    font-family: 'Kanit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+    overflow: hidden;
+  }
+}
+
+@keyframes eerie-flicker {
+  0%, 100% { opacity: 0.98; }
+  15% { opacity: 0.88; }
+  25% { opacity: 0.45; }
+  30% { opacity: 0.94; }
+  55% { opacity: 0.5; }
+  60% { opacity: 0.98; }
+  80% { opacity: 0.75; }
+  90% { opacity: 0.3; }
+}
+
+@keyframes pulse-blood {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.5));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.85));
+    transform: scale(1.06);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes creepy-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-flicker {
+  animation: eerie-flicker 4s infinite;
+}
+
+.animate-blood-pulse {
+  animation: pulse-blood 2.2s infinite ease-in-out;
+}
+
+.animate-shake {
+  animation: shake 0.35s ease-in-out;
+}
+
+.animate-creepy-float {
+  animation: creepy-float 3.5s ease-in-out infinite;
+}
+
+.flashlight-mask {
+  will-change: background;
+  background: radial-gradient(circle 150px at var(--light-x, 50%) var(--light-y, 50%), rgba(255, 230, 180, 0.02) 0%, rgba(15, 10, 12, 0.75) 60%, rgba(5, 5, 5, 0.96) 88%, rgba(0, 0, 0, 0.995) 100%);
+  transform: translateZ(0);
+}
+
+.flashlight-halo {
+  will-change: transform;
+  transform: translate3d(calc(var(--light-x, 50%) - 140px), calc(var(--light-y, 50%) - 140px), 0);
+  pointer-events: none;
+}
+
+.text-glow-red {
+  text-shadow: 0 0 10px rgba(244, 63, 94, 0.9), 0 0 20px rgba(244, 63, 94, 0.45);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.9), 0 0 20px rgba(245, 158, 11, 0.45);
+}
+
+.text-glow-emerald {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.9), 0 0 20px rgba(16, 185, 129, 0.45);
+}
+
+.text-glow-white {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 16px rgba(255, 255, 255, 0.3);
+}
+
+.text-crisp {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+.font-creepster {
+  font-family: 'Creepster', cursive, sans-serif;
+}
+
+.font-nosifer {
+  font-family: 'Nosifer', cursive, sans-serif;
+}
+
+.font-special {
+  font-family: 'Special Elite', cursive, monospace;
+}
+
+.font-kanit {
+  font-family: 'Kanit', sans-serif;
+}
+
