@@ -123,7 +123,7 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
   return (
     <div
       style={{ backgroundColor: isWrong ? 'rgba(50, 10, 20, 0.96)' : 'rgba(0, 0, 0, 0.95)' }}
-      className="fixed inset-0 z-[999] flex items-center justify-center p-4 animate-fade-in transition-colors duration-200"
+      className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-4 animate-fade-in transition-colors duration-200 overflow-y-auto"
     >
       <div
         id="keypad-lock-modal"
@@ -134,7 +134,7 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
             : isWrong || isShaking
             ? 'border-rose-500 shadow-[0_0_45px_rgba(244,63,94,0.9)] animate-shake ring-4 ring-rose-500/50'
             : 'border-rose-600/80 shadow-[0_0_40px_rgba(244,63,94,0.3)]'
-        } rounded-3xl p-6 text-white select-none transition-all`}
+        } rounded-3xl p-4 sm:p-6 text-white select-none transition-all my-auto max-h-[96vh] overflow-y-auto`}
       >
         {/* Close Modal Button */}
         <button
@@ -142,38 +142,38 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
           onClick={onClose}
           disabled={isSuccess}
           aria-label="ปิดหน้าต่างรหัส"
-          className="absolute top-4 right-4 p-2 text-neutral-200 hover:text-white bg-[#181822] hover:bg-[#252533] rounded-xl border border-neutral-700 cursor-pointer active:scale-95 transition-all shadow-md"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 text-neutral-200 hover:text-white bg-[#181822] hover:bg-[#252533] rounded-xl border border-neutral-700 cursor-pointer active:scale-95 transition-all shadow-md z-10"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Lock Header */}
-        <div className="text-center mb-4">
-          <div className={`inline-flex items-center justify-center p-3 rounded-2xl ${
+        <div className="text-center mb-3 sm:mb-4 pr-6 sm:pr-0">
+          <div className={`inline-flex items-center justify-center p-2.5 sm:p-3 rounded-2xl ${
             isWrong ? 'bg-rose-950 border-2 border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.7)]' : 'bg-[#181822] border border-neutral-700'
-          } mb-2 shadow-inner transition-colors`}>
+          } mb-1.5 sm:mb-2 shadow-inner transition-colors`}>
             {isSuccess ? (
-              <Unlock className="w-7 h-7 text-emerald-400 animate-bounce drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+              <Unlock className="w-6 h-6 sm:w-7 sm:h-7 text-emerald-400 animate-bounce drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
             ) : isWrong ? (
-              <AlertTriangle className="w-7 h-7 text-rose-400 animate-bounce drop-shadow-[0_0_8px_rgba(244,63,94,0.8)]" />
+              <AlertTriangle className="w-6 h-6 sm:w-7 sm:h-7 text-rose-400 animate-bounce drop-shadow-[0_0_8px_rgba(244,63,94,0.8)]" />
             ) : (
-              <Lock className="w-7 h-7 text-rose-500 drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
+              <Lock className="w-6 h-6 sm:w-7 sm:h-7 text-rose-500 drop-shadow-[0_0_8px_rgba(244,63,94,0.6)]" />
             )}
           </div>
           <h2 className="font-creepster tracking-wider text-2xl sm:text-3xl text-rose-500 text-glow-red">
             {isSuccess ? 'DOOR UNLOCKED!' : isWrong ? 'INCORRECT CODE!' : 'CURSED LOCKBOX'}
           </h2>
-          <p className="text-xs sm:text-sm font-kanit font-medium text-neutral-200 mt-1 text-crisp">
+          <p className="text-xs sm:text-sm font-kanit font-medium text-neutral-200 mt-0.5 sm:mt-1 text-crisp">
             กรอกรหัสผ่าน 3 หลักที่ได้จากสมการเพื่อปลดล็อคประตู
           </p>
         </div>
 
         {/* Quick Clue Reminder Strip */}
-        <div className="bg-[#121218] border border-neutral-700 rounded-xl p-3 mb-4 flex items-center justify-around text-xs font-kanit shadow-inner">
+        <div className="bg-[#121218] border border-neutral-700 rounded-xl p-2 sm:p-3 mb-3 sm:mb-4 flex items-center justify-around text-xs font-kanit shadow-inner">
           {clues.map((clue) => (
-            <div key={clue.id} className="flex items-center gap-1.5" title={clue.found ? `${clue.name}: ${clue.equation}` : 'ยังไม่พบคำใบ้'}>
-              <span className="text-base">{clue.emoji}</span>
-              <span className="text-neutral-200 text-xs font-medium text-crisp">หลัก {clue.digitIndex}:</span>
+            <div key={clue.id} className="flex items-center gap-1 sm:gap-1.5" title={clue.found ? `${clue.name}: ${clue.equation}` : 'ยังไม่พบคำใบ้'}>
+              <span className="text-sm sm:text-base">{clue.emoji}</span>
+              <span className="text-neutral-200 text-[11px] sm:text-xs font-medium text-crisp">หลัก {clue.digitIndex}:</span>
               <span className={`font-mono font-bold text-xs sm:text-sm ${clue.found ? 'text-amber-300 text-glow-amber' : 'text-neutral-500'}`}>
                 {clue.found ? clue.equation : '?'}
               </span>
@@ -182,15 +182,15 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
         </div>
 
         {/* 3-Digit Display Boxes + Native Input */}
-        <div className="relative mb-4">
-          <div className="flex justify-center gap-3">
+        <div className="relative mb-3 sm:mb-4">
+          <div className="flex justify-center gap-2.5 sm:gap-3">
             {[0, 1, 2].map((idx) => {
               const char = inputCode[idx];
               const isCurrent = inputCode.length === idx;
               return (
                 <div
                   key={idx}
-                  className={`w-14 h-16 rounded-2xl border-2 flex items-center justify-center text-3xl font-mono font-black transition-all ${
+                  className={`w-12 h-14 sm:w-14 sm:h-16 rounded-2xl border-2 flex items-center justify-center text-2xl sm:text-3xl font-mono font-black transition-all ${
                     isWrong
                       ? 'border-rose-500 bg-rose-950 text-rose-300 shadow-[0_0_25px_rgba(244,63,94,0.9)] ring-2 ring-rose-500 animate-pulse text-glow-red'
                       : char !== undefined
@@ -239,14 +239,14 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
         )}
 
         {/* Keypad Buttons Grid (0-9, Clear, Backspace) */}
-        <div className="grid grid-cols-3 gap-2.5 mb-4">
+        <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-3 sm:mb-4">
           {['1', '2', '3', '4', '5', '6', '7', '8', '9'].map((num) => (
             <button
               key={num}
               id={`btn-pad-${num}`}
               onClick={() => handleDigitPress(num)}
               disabled={isSuccess}
-              className="py-3.5 bg-[#181822] hover:bg-[#262636] active:bg-amber-950 border border-neutral-700 hover:border-neutral-500 rounded-xl text-xl font-mono font-black text-white transition-all cursor-pointer active:scale-95 shadow-md text-glow-white"
+              className="py-2.5 sm:py-3.5 bg-[#181822] hover:bg-[#262636] active:bg-amber-950 border border-neutral-700 hover:border-neutral-500 rounded-xl text-lg sm:text-xl font-mono font-black text-white transition-all cursor-pointer active:scale-95 shadow-md text-glow-white touch-manipulation min-h-[44px]"
             >
               {num}
             </button>
@@ -255,7 +255,7 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
             id="btn-pad-clear"
             onClick={handleClear}
             disabled={isSuccess}
-            className="py-3.5 bg-[#14141c] hover:bg-[#20202c] border border-neutral-700 hover:border-neutral-500 rounded-xl text-xs sm:text-sm font-kanit font-bold text-neutral-200 hover:text-white transition-all cursor-pointer active:scale-95 text-crisp"
+            className="py-2.5 sm:py-3.5 bg-[#14141c] hover:bg-[#20202c] border border-neutral-700 hover:border-neutral-500 rounded-xl text-xs sm:text-sm font-kanit font-bold text-neutral-200 hover:text-white transition-all cursor-pointer active:scale-95 text-crisp touch-manipulation min-h-[44px]"
           >
             ล้าง (C)
           </button>
@@ -263,7 +263,7 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
             id="btn-pad-0"
             onClick={() => handleDigitPress('0')}
             disabled={isSuccess}
-            className="py-3.5 bg-[#181822] hover:bg-[#262636] active:bg-amber-950 border border-neutral-700 hover:border-neutral-500 rounded-xl text-xl font-mono font-black text-white transition-all cursor-pointer active:scale-95 shadow-md text-glow-white"
+            className="py-2.5 sm:py-3.5 bg-[#181822] hover:bg-[#262636] active:bg-amber-950 border border-neutral-700 hover:border-neutral-500 rounded-xl text-lg sm:text-xl font-mono font-black text-white transition-all cursor-pointer active:scale-95 shadow-md text-glow-white touch-manipulation min-h-[44px]"
           >
             0
           </button>
@@ -272,7 +272,7 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
             onClick={handleBackspace}
             disabled={isSuccess}
             aria-label="ลบตัวเลขล่าสุด"
-            className="py-3.5 bg-[#14141c] hover:bg-[#20202c] border border-neutral-700 hover:border-neutral-500 rounded-xl flex items-center justify-center text-neutral-200 hover:text-white transition-all cursor-pointer active:scale-95"
+            className="py-2.5 sm:py-3.5 bg-[#14141c] hover:bg-[#20202c] border border-neutral-700 hover:border-neutral-500 rounded-xl flex items-center justify-center text-neutral-200 hover:text-white transition-all cursor-pointer active:scale-95 touch-manipulation min-h-[44px]"
           >
             <Delete className="w-5 h-5 text-neutral-200" />
           </button>
@@ -283,7 +283,7 @@ export const KeypadLock: React.FC<KeypadLockProps> = ({
           id="btn-submit-unlock"
           onClick={handleUnlockSubmit}
           disabled={isSuccess}
-          className={`w-full py-3.5 rounded-xl font-kanit font-black text-base flex items-center justify-center gap-2 shadow-xl transition-all cursor-pointer active:scale-95 ${
+          className={`w-full py-3 sm:py-3.5 rounded-xl font-kanit font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl transition-all cursor-pointer active:scale-95 touch-manipulation min-h-[44px] ${
             isSuccess
               ? 'bg-emerald-500 text-black shadow-[0_0_30px_rgba(16,185,129,0.8)] border-2 border-emerald-300'
               : 'bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white shadow-[0_0_25px_rgba(244,63,94,0.7)] border-2 border-rose-400 text-glow-white'

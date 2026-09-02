@@ -12,19 +12,19 @@ export const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, on
   return (
     <div
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.95)' }}
-      className="fixed inset-0 z-[999] flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
     >
       <div
         id="instructions-modal"
         style={{ backgroundColor: '#0e0e14' }}
-        className="relative w-full max-w-lg border-2 border-rose-600 shadow-[0_0_50px_rgba(244,63,94,0.4)] rounded-3xl p-6 sm:p-7 text-white select-none max-h-[90vh] overflow-y-auto"
+        className="relative w-full max-w-lg border-2 border-rose-600 shadow-[0_0_50px_rgba(244,63,94,0.4)] rounded-3xl p-4 sm:p-7 text-white select-none my-auto max-h-[96vh] overflow-y-auto"
       >
         {/* Close Button */}
         <button
           id="btn-close-instructions"
           onClick={onClose}
           aria-label="ปิดหน้าต่างวิธีเล่น"
-          className="absolute top-4 right-4 p-2 text-neutral-200 hover:text-white bg-[#181822] hover:bg-[#252533] rounded-xl border border-neutral-700 cursor-pointer active:scale-95 transition-all shadow-md"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 text-neutral-200 hover:text-white bg-[#181822] hover:bg-[#252533] rounded-xl border border-neutral-700 cursor-pointer active:scale-95 transition-all shadow-md z-10"
         >
           <X className="w-5 h-5" />
         </button>
@@ -100,11 +100,11 @@ export const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, on
         </div>
 
         {/* Understand Button */}
-        <div className="mt-5">
+        <div className="mt-4 sm:mt-5">
           <button
             id="btn-understand-instructions"
             onClick={onClose}
-            className="w-full py-3.5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white rounded-2xl font-kanit font-black text-base shadow-[0_0_25px_rgba(244,63,94,0.6)] border-2 border-rose-400 transition-all cursor-pointer active:scale-95 text-glow-white"
+            className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white rounded-2xl font-kanit font-black text-sm sm:text-base shadow-[0_0_25px_rgba(244,63,94,0.6)] border-2 border-rose-400 transition-all cursor-pointer active:scale-95 text-glow-white touch-manipulation min-h-[44px]"
           >
             เข้าใจแล้ว เข้าสู่ห้องสาป
           </button>

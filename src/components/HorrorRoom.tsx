@@ -129,7 +129,15 @@ export const HorrorRoom: React.FC<HorrorRoomProps> = ({
     scheduleUpdate(e.clientX - rect.left, e.clientY - rect.top);
   };
 
-  // High-performance Touchmove listener for mobile
+  // High-performance Touch listeners for mobile with touchstart, touchmove, and touchend
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 0) return;
+    updateContainerRect();
+    const rect = containerRectRef.current;
+    const touch = e.touches[0];
+    scheduleUpdate(touch.clientX - rect.left, touch.clientY - rect.top);
+  };
+
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (e.touches.length === 0) return;
     const rect = containerRectRef.current;
@@ -137,9 +145,16 @@ export const HorrorRoom: React.FC<HorrorRoomProps> = ({
     scheduleUpdate(touch.clientX - rect.left, touch.clientY - rect.top);
   };
 
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.changedTouches.length === 0) return;
+    const rect = containerRectRef.current;
+    const touch = e.changedTouches[0];
+    scheduleUpdate(touch.clientX - rect.left, touch.clientY - rect.top);
+  };
+
   const handleRoomClick = () => {
     if (!flashlightOn) {
-      setDarknessWarning('มืดเกินไป! กดเปิดไฟฉาย (Spacebar) เพื่อมองเห็นสิ่งของ');
+      setDarknessWarning('มืดเกินไป! กดปุ่มไฟฉายบนหน้าจอเพื่อมองเห็นสิ่งของ');
       setTimeout(() => setDarknessWarning(null), 2500);
     }
   };
@@ -149,9 +164,11 @@ export const HorrorRoom: React.FC<HorrorRoomProps> = ({
       ref={containerRef}
       id="horror-room-canvas"
       onMouseMove={handleMouseMove}
+      onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       onClick={handleRoomClick}
-      className="relative w-full h-screen overflow-hidden bg-[#050505] cursor-crosshair select-none flex items-center justify-center"
+      className="relative w-full h-full min-h-screen overflow-hidden bg-[#050505] cursor-crosshair select-none flex items-center justify-center touch-none"
       style={{
         touchAction: 'none',
         // Default initial CSS variables

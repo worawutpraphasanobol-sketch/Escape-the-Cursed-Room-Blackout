@@ -79,9 +79,9 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
         <button
           id="btn-enter-the-room"
           onClick={onStartGame}
-          className="group relative w-full max-w-md py-4 sm:py-4.5 px-6 bg-gradient-to-r from-rose-700 via-red-600 to-rose-700 hover:from-rose-600 hover:via-red-500 hover:to-rose-600 text-white font-kanit font-black text-lg sm:text-xl rounded-2xl shadow-[0_0_35px_rgba(244,63,94,0.6)] hover:shadow-[0_0_50px_rgba(244,63,94,0.85)] border border-rose-400/40 transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer active:scale-95"
+          className="group relative w-full max-w-md py-3.5 sm:py-4.5 px-6 bg-gradient-to-r from-rose-700 via-red-600 to-rose-700 hover:from-rose-600 hover:via-red-500 hover:to-rose-600 text-white font-kanit font-black text-base sm:text-xl rounded-2xl shadow-[0_0_35px_rgba(244,63,94,0.6)] hover:shadow-[0_0_50px_rgba(244,63,94,0.85)] border border-rose-400/40 transition-all duration-300 flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer active:scale-95 touch-manipulation min-h-[48px]"
         >
-          <Play className="w-6 h-6 fill-current text-white group-hover:scale-110 transition-transform" />
+          <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-current text-white group-hover:scale-110 transition-transform" />
           <span>Enter the Room (เข้าสู่ห้องสาป)</span>
         </button>
 
